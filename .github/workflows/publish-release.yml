@@ -26,4 +26,7 @@ jobs:
           sed -i "s/0.0.0/$VERSION/g" ./pkg/unrust-proc-macro/Cargo.toml
           sed -i "s/0.0.0/$VERSION/g" ./pkg/inbuilt/Cargo.toml
           sed -i "s/0.0.0/$VERSION/g" ./pkg/codegen/Cargo.toml
-          cargo publish --dry-run --allow-dirty
+          cargo publish --dry-run --allow-dirty -p unrust-proc-macro
+          cargo publish --dry-run --allow-dirty -p unrust-inbuilt
+          cargo publish --dry-run --allow-dirty -p unrust-codegen
+          cargo publish --dry-run --allow-dirty -p unrust
