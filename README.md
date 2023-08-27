@@ -1,6 +1,7 @@
 
 ![Crates.io](https://img.shields.io/crates/v/unrust?link=https%3A%2F%2Fcrates.io%2Fcrates%2Funrust)
 # Unrust - Rust + Bevy + Unity to make games!
+![Peek 2023-08-27 18-20](https://github.com/gamedolphin/unrust/assets/7590634/17b9e2a9-e0a1-4891-82a3-133fa32e86ec)
 
 You want to use Rust + Bevy to make your games. But you miss a good editor to go with it? 
 
