@@ -19,6 +19,7 @@ unrust = { path = "../../../pkg/unrust" }
 tracing = "0.1"
 rand = "0.8.5"
 serde = { version = "1.0", features = ["derive"] }
+bevy_common_assets = { version = "0.7.0", features = ["toml"] }
 
 [patch.crates-io]
 genco = { git = "https://github.com/udoprog/genco", branch = "proc-macro2-fork" }

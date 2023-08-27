@@ -24,7 +24,6 @@ namespace unrust.runtime
             this.update = HandeIncomingUpdates;
             this.destroy = OnDestroyEntity;
             this.nativeWrapper.Initialize(this.create, this.update, this.destroy);
-            UnityEngine.Debug.Log("CAlled initialize");
         }
 
         private void OnDestroyEntity(UnityEntity* data, nuint len)
@@ -54,13 +53,10 @@ namespace unrust.runtime
                     }
                 }
             }
-
-
         }
 
         protected override void OnStartRunning()
         {
-            UnityEngine.Debug.Log("OnStartRunning!");
             base.OnStartRunning();
             foreach (var (buffer, entity) in SystemAPI.Query<DynamicBuffer<UnrustSpawnable>>().WithEntityAccess())
             {
@@ -74,7 +70,6 @@ namespace unrust.runtime
 
                 fixed (UnityEntity* ptr = guids)
                 {
-                    UnityEngine.Debug.Log($"calling register with {guids.Length}!");
                     this.nativeWrapper.RegisterPrefabs(new UnityPrefab
                     {
                         ResourceID = resource_id.Value,
