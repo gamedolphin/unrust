@@ -19,14 +19,39 @@ jobs:
             toolchain: nightly
             override: true
 
-      - name: Update version strings
+      - name: Update version strings and check if it builds
         run: |
           export VERSION=${{ github.event.inputs.release_tag }}
           sed -i "s/0.0.0/$VERSION/g" ./pkg/unrust/Cargo.toml
           sed -i "s/0.0.0/$VERSION/g" ./pkg/unrust-proc-macro/Cargo.toml
           sed -i "s/0.0.0/$VERSION/g" ./pkg/inbuilt/Cargo.toml
           sed -i "s/0.0.0/$VERSION/g" ./pkg/codegen/Cargo.toml
-          cargo publish --dry-run --allow-dirty -p unrust-proc-macro
-          cargo publish --dry-run --allow-dirty -p unrust-inbuilt
-          cargo publish --dry-run --allow-dirty -p unrust-codegen
-          cargo publish --dry-run --allow-dirty -p unrust
+          cargo build -p unrust
+
+      - name: Publish to crates!
+        run: |
+          cargo publish -p unrust-proc-macro --allow-dirty
+          cargo publish -p unrust-inbuilt --allow-dirty
+          cargo publish -p unrust-codegen --allow-dirty
+          cargo publish -p unrust --allow-dirty
+
+      - name: Unity sdk template update
+        run: |
+          export VERSION=${{ github.event.inputs.release_tag }}
+          sed -i "s/0.0.0/$VERSION/g" ./unity/sdk/template~/Cargo.toml.template
+          sed -i "s/0.0.0/$VERSION/g" ./unity/sdk/package.json
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Unity sdk tarball
+        run: |
+          npm pack ./unity/sdk
+
+      - name: Upload sdk
+        uses: actions/upload-artifact@v3
+        with:
+          name: unrust-sdk-${{ github.event.inputs.release_tag }}
+          path: com.wavefunk.unrust-${{ github.event.inputs.release_tag }}.tgz
