@@ -178,12 +178,18 @@ fn update_unity_system(
 }
 
 fn destroy_unity_system(
+    mut commands: Commands,
     callbacks_res: NonSend<CallbacksNonSend>,
-    destroyed: Query<&DestroyEntity>, // add more inbuilt components here
+    destroyed: Query<(Entity, &DestroyEntity)>,
 ) {
     let destroyed_entities = destroyed
         .iter()
-        .map(|v| v.entity)
+        .map(|(entity, v)| {
+            let mut comm = commands.entity(entity);
+            comm.despawn();
+
+            v.entity
+        })
         .collect::<Vec<UnityEntity>>();
 
     (callbacks_res.destroy_fn)(destroyed_entities.as_ptr(), destroyed_entities.len());

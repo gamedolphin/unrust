@@ -57,14 +57,14 @@ pub unsafe extern "C" fn load(logger: LoggerFunc) -> *mut UnrustContextWrapper {
 }
 
 #[no_mangle]
-pub extern "C" fn init(
+#[allow(clippy::missing_safety_doc)]
+pub unsafe extern "C" fn init(
     ctx: *mut UnrustContextWrapper,
     base_path: *const c_char,
     create: CreateFn,
     update: UpdateFn,
     destroy: DestroyFn,
 ) {
-    tracing::info!("called init");
     let ctx = unsafe { Box::leak(Box::from_raw(ctx as *mut UnrustContext)) };
     let base_path = unsafe { get_string(base_path) };
     ctx.app
@@ -72,7 +72,6 @@ pub extern "C" fn init(
 
     unsafe {
         if let Some(game) = &GAMEPLUGIN {
-            tracing::info!("calling initialize on game!");
             game.initialize(&mut ctx.app);
         } else {
             tracing::info!("game  not setup!");
@@ -86,7 +85,6 @@ pub extern "C" fn init(
 pub extern "C" fn register_prefabs(ctx: *mut UnrustContextWrapper, prefabs: PrefabData) {
     let ctx = unsafe { Box::leak(Box::from_raw(ctx as *mut UnrustContext)) };
     unsafe {
-        tracing::info!("handing of prefabs to game");
         if let Some(game) = &GAMEPLUGIN {
             game.register(&mut ctx.app.world, prefabs);
         }
