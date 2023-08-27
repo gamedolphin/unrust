@@ -12,9 +12,9 @@ mod hello_cube_prefab;
 mod hello_cube_simple;
 
 #[unrust_setup((
-    (DoRotate,Boid,),
+    (DoRotate,),
     (GameState,),
-    (CubePrefabs,BoidPrefabs,),
+    (CubePrefabs,),
 ))]
 pub fn setup(app: &mut App) {
     app.add_systems(

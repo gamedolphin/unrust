@@ -28,12 +28,10 @@ namespace unrust.runtime
 
         public void Initialize(CreateFunction create, UpdateFunction update, DestroyFunction destroy)
         {
-            UnityEngine.Debug.Log("about to call native init");
             var base_path = Application.dataPath;
             var base_bytes = System.Text.Encoding.UTF8.GetBytes(base_path + char.MinValue); // add null termination
             fixed (byte* ptr = base_bytes)
             {
-                UnityEngine.Debug.Log(" calling native init with fixed");
                 this.nativeFunctions.init(this.ctx, ptr, create, update, destroy);
             }
         }
