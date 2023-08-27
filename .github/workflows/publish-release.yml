@@ -69,7 +69,7 @@ jobs:
           path: com.wavefunk.unrust-${{ github.event.inputs.release_tag }}.tgz
 
       - uses: actions/github-script@v6
-         with:
+        with:
            script: |
             github.rest.git.createRef({
               owner: context.repo.owner,
