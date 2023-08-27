@@ -8,8 +8,9 @@ pub use bevy;
 
 use bevy::prelude::*;
 pub use codegen::generate_csharp;
-use inbuilt::{ingest_component, InbuiltData, UnityEntity};
+pub use inbuilt::*;
 pub use loader::GamePlugin;
+pub use tracing;
 
 pub use unity::{CreateFn, DestroyEntity, DestroyFn, InstantiateEntity, PrefabData, UpdateFn};
 pub use unrust_proc_macro::*;
