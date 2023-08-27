@@ -7,11 +7,6 @@ pub struct DoRotate {
     pub speed: f32,
 }
 
-#[unity_authoring]
-pub struct Boid {
-    pub speed: i32,
-}
-
 #[bevy_state]
 pub enum GameState {
     #[default]
@@ -25,9 +20,4 @@ pub enum GameState {
 #[unity_prefab]
 pub enum CubePrefabs {
     HelloCube,
-}
-
-#[unity_prefab]
-pub enum BoidPrefabs {
-    Boid,
 }

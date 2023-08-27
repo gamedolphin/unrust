@@ -12,14 +12,12 @@ namespace unrust.userland
     public enum CustomType : byte
     {
         DoRotate = 0,
-        Boid = 1,
     }
 
     [StructLayout(LayoutKind.Explicit)]
     public struct CustomComponents
     {
-        public const int ComponentCount = 2;
+        public const int ComponentCount = 1;
         [FieldOffset(0)] public DoRotate DoRotate;
-        [FieldOffset(0)] public Boid Boid;
     }
 }

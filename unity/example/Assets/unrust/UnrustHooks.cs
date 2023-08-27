@@ -25,14 +25,6 @@ namespace unrust.userland
                     value = new CustomComponents { DoRotate = manager.GetComponentData<DoRotate>(entity) },
                 };
                 count++;
-            }if (manager.HasComponent<Boid>(entity))
-            {
-                arr[count] = new CustomData
-                {
-                    ty = CustomType.Boid,
-                    value = new CustomComponents { Boid = manager.GetComponentData<Boid>(entity) },
-                };
-                count++;
             }
 
             var stateCount = 0;
