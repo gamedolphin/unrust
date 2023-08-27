@@ -29,11 +29,13 @@ jobs:
           cargo build -p unrust
 
       - name: Publish to crates!
+        env:
+          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
         run: |
-          cargo publish -p unrust-proc-macro --allow-dirty
-          cargo publish -p unrust-inbuilt --allow-dirty
-          cargo publish -p unrust-codegen --allow-dirty
-          cargo publish -p unrust --allow-dirty
+          cargo publish -p unrust-proc-macro --allow-dirty --token $CRATES_TOKEN
+          cargo publish -p unrust-inbuilt --allow-dirty --token $CRATES_TOKEN
+          cargo publish -p unrust-codegen --allow-dirty --token $CRATES_TOKEN
+          cargo publish -p unrust --allow-dirty --token $CRATES_TOKEN
 
       - name: Unity sdk template update
         run: |
