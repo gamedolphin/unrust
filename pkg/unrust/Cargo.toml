@@ -1,0 +1,22 @@
+[package]
+name = "unrust"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "unrust.rs"
+
+[build-dependencies]
+inbuilt = { path = "../inbuilt" }
+anyhow.workspace = true
+
+[dependencies]
+bevy.workspace = true
+parking_lot.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+unrust-proc-macro = { path = "../unrust-proc-macro" }
+codegen = { path = "../codegen" }
+inbuilt = { path = "../inbuilt" }

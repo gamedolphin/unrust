@@ -1,0 +1,18 @@
+[workspace]
+resolver = "2"
+
+members = [
+  "pkg/*"  
+]
+
+[workspace.dependencies]
+parking_lot = "0.12"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+anyhow = "1"
+thiserror = "1.0"
+bevy = { version = "0.11.0", default-features = false , features = ["multi-threaded", "trace", "bevy_asset", "filesystem_watcher" ]}
+
+[patch.crates-io]
+genco = { git = "https://github.com/udoprog/genco", branch = "proc-macro2-fork" }
+proc-macro2 = { git = "https://github.com/udoprog/proc-macro2", branch = "span-locations" }

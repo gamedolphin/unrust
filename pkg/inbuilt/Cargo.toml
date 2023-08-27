@@ -1,0 +1,23 @@
+[package]
+name = "inbuilt"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "inbuilt.rs"
+
+[build-dependencies]
+anyhow.workspace = true
+syn = { version = "2.0", features = ["full"] }
+quote = "1"
+proc-macro2 = "1"
+genco = "0.17.5"
+
+[dependencies]
+bevy.workspace = true
+parking_lot.workspace = true
+tracing.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+unrust-proc-macro = { path = "../unrust-proc-macro" }
+genco = "0.17.5"

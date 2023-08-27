@@ -1,0 +1,13 @@
+[package]
+name = "codegen"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "codegen.rs"
+
+[dependencies]
+anyhow.workspace = true
+syn = { version = "2", features = ["full"] }
+inbuilt = { path = "../inbuilt" }
+genco = "0.17.5"

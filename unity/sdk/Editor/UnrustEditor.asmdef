@@ -1,0 +1,18 @@
+{
+    "name": "UnrustEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1ddaf467366a55d3ea7a9916ec68b0a2"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
