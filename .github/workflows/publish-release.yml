@@ -7,6 +7,7 @@ on:
 
 jobs:
   cargo-publish:
+    permissions: write-all
     name: Publish Cargo
     runs-on: ubuntu-latest
     steps:
