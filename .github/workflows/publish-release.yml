@@ -1,0 +1,29 @@
+name: Release
+on:
+ workflow_dispatch:
+    inputs:
+      release_tag:
+        required: true
+
+jobs:
+  cargo-publish:
+    name: Publish Cargo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Install latest nightly
+        uses: actions-rs/toolchain@v1
+        with:
+            toolchain: nightly
+            override: true
+
+      - name: Update version strings
+        run: |
+          export VERSION=${{ github.event.inputs.release_tag }}
+          sed -i "s/0.0.0/$VERSION/g" ./pkg/unrust/Cargo.toml
+          sed -i "s/0.0.0/$VERSION/g" ./pkg/unrust-proc-macro/Cargo.toml
+          sed -i "s/0.0.0/$VERSION/g" ./pkg/inbuilt/Cargo.toml
+          sed -i "s/0.0.0/$VERSION/g" ./pkg/codegen/Cargo.toml
+          cargo publish --dry-run --allow-dirty
