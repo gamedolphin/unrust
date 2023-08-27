@@ -7,6 +7,7 @@ mod unity;
 pub use bevy;
 
 use bevy::prelude::*;
+pub use codegen::generate_csharp;
 use inbuilt::{ingest_component, InbuiltData, UnityEntity};
 pub use loader::GamePlugin;
 

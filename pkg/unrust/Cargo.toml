@@ -1,13 +1,18 @@
 [package]
 name = "unrust"
+description = "The rust side of the unity package to work with rust + bevy in unity!"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+homepage = "https://github.com/gamedolphin/unrust"
+repository = "https://github.com/gamedolphin/unrust"
+readme = false
 
 [lib]
 path = "unrust.rs"
 
 [build-dependencies]
-inbuilt = { path = "../inbuilt" }
+inbuilt = { path = "../inbuilt" , package = "unrust-inbuilt" , version = "0.1.0" }
 anyhow.workspace = true
 
 [dependencies]
@@ -17,6 +22,6 @@ tracing.workspace = true
 tracing-subscriber.workspace = true
 anyhow.workspace = true
 thiserror.workspace = true
-unrust-proc-macro = { path = "../unrust-proc-macro" }
-codegen = { path = "../codegen" }
-inbuilt = { path = "../inbuilt" }
+unrust-proc-macro = { path = "../unrust-proc-macro" , version = "0.1.0" }
+codegen = { path = "../codegen" , package = "unrust-codegen" , version = "0.1.0" }
+inbuilt = { path = "../inbuilt" , package = "unrust-inbuilt" , version = "0.1.0" }

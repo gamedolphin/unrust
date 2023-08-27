@@ -480,16 +480,13 @@ fn register_prefabs(item: TokenStream) -> proc_macro2::TokenStream {
         .enumerate()
         .map(|(index, ident)| {
             let count = index as i32;
-            let ident_name = format!("{:?}", ident);
             let ident = quote! { #ident };
             let ident: syn::Expr =
                 syn::parse_str(&format!("{}Resource", ident.to_string().replace(' ', ""))).unwrap();
 
             Some(quote! {
                 #count => {
-                    tracing::info!("loading resource prefabs: {} : {}", #count, #ident_name);
                     let Some(mut res) = world.get_resource_mut::<#ident>() else {
-                        tracing::warn!("missing expected resource {}",#ident_name);
                         return;
                     };
 

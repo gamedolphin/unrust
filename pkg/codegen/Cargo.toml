@@ -1,7 +1,9 @@
 [package]
-name = "codegen"
+name = "unrust-codegen"
+description = "The csharp codegenerator used by unrust."
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 
 [lib]
 path = "codegen.rs"
@@ -9,5 +11,5 @@ path = "codegen.rs"
 [dependencies]
 anyhow.workspace = true
 syn = { version = "2", features = ["full"] }
-inbuilt = { path = "../inbuilt" }
+inbuilt = { path = "../inbuilt", package = "unrust-inbuilt" , version = "0.1.0" }
 genco = "0.17.5"
