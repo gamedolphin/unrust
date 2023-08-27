@@ -6,6 +6,7 @@ mod types;
 use types::*;
 
 mod hello_cube_enableable;
+mod hello_cube_parenting;
 mod hello_cube_simple;
 
 #[unrust_setup((
@@ -26,5 +27,14 @@ pub fn setup(app: &mut App) {
             hello_cube_enableable::enable_disable_rotation,
         )
             .run_if(in_state(types::GameState::Enableable)),
+    )
+    .add_systems(
+        Update,
+        (
+            hello_cube_parenting::track_old_parent,
+            hello_cube_parenting::parent_reparent,
+            hello_cube_simple::rotate_cube,
+        )
+            .run_if(in_state(types::GameState::Parenting)),
     );
 }
