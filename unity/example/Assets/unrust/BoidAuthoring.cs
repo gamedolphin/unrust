@@ -5,21 +5,21 @@ using UnityEngine;
 namespace unrust.userland
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct SampleComponent : IComponentData
+    public struct Boid : IComponentData
     {
-        public float speed;
+        public int speed;
     }
 
-    public class SampleComponentAuthoring : MonoBehaviour
+    public class BoidAuthoring : MonoBehaviour
     {
-        public float speed;
+        public int speed;
 
-        class Baker : Baker<SampleComponentAuthoring>
+        class Baker : Baker<BoidAuthoring>
         {
-            public override void Bake(SampleComponentAuthoring authoring)
+            public override void Bake(BoidAuthoring authoring)
             {
                 var entity = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent(entity, new SampleComponent
+                AddComponent(entity, new Boid
                     {
                         speed = authoring.speed,
                     });

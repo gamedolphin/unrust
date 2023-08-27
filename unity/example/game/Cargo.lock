@@ -2267,7 +2267,7 @@ checksum = "f962df74c8c05a667b5ee8bcf162993134c104e96440b663c8daa176dc772d8c"
 
 [[package]]
 name = "unrust"
-version = "0.1.0"
+version = "0.0.0"
 dependencies = [
  "anyhow",
  "bevy",
@@ -2282,7 +2282,7 @@ dependencies = [
 
 [[package]]
 name = "unrust-codegen"
-version = "0.1.0"
+version = "0.0.0"
 dependencies = [
  "anyhow",
  "genco",
@@ -2292,7 +2292,7 @@ dependencies = [
 
 [[package]]
 name = "unrust-inbuilt"
-version = "0.1.0"
+version = "0.0.0"
 dependencies = [
  "anyhow",
  "bevy",
@@ -2308,7 +2308,7 @@ dependencies = [
 
 [[package]]
 name = "unrust-proc-macro"
-version = "0.1.0"
+version = "0.0.0"
 dependencies = [
  "proc-macro2",
  "quote",

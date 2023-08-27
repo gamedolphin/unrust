@@ -17,18 +17,36 @@ namespace unrust.userland
             var count = 0;
             var arr = new CustomData[CustomComponents.ComponentCount];
 
-            if (manager.HasComponent<SampleComponent>(entity))
+            if (manager.HasComponent<DoRotate>(entity))
             {
                 arr[count] = new CustomData
                 {
-                    ty = CustomType.SampleComponent,
-                    value = new CustomComponents { SampleComponent = manager.GetComponentData<SampleComponent>(entity) },
+                    ty = CustomType.DoRotate,
+                    value = new CustomComponents { DoRotate = manager.GetComponentData<DoRotate>(entity) },
+                };
+                count++;
+            }if (manager.HasComponent<Boid>(entity))
+            {
+                arr[count] = new CustomData
+                {
+                    ty = CustomType.Boid,
+                    value = new CustomComponents { Boid = manager.GetComponentData<Boid>(entity) },
                 };
                 count++;
             }
 
             var stateCount = 0;
             var stateArr = new CustomState[CustomState.CustomStateCount];
+
+            if (manager.HasComponent<GameState>(entity))
+            {
+                stateArr[stateCount] = new CustomState
+                {
+                    ty = CustomStateType.GameState,
+                    value = manager.GetComponentData<GameState>(entity).Value,
+                };
+                stateCount++;
+            }
 
             fixed (void* ptr = arr)
             {
