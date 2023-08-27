@@ -7,7 +7,7 @@ edition = "2021"
 
 [build-dependencies]
 anyhow = "1"
-codegen = { path = "../../../pkg/codegen" }
+unrust = { path = "../../../pkg/unrust" }
 
 [lib]
 crate-type = ["cdylib"]

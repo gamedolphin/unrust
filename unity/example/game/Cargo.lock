@@ -833,16 +833,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fd16c4719339c4530435d38e511904438d07cce7950afa3718a84ac36c10e89e"
 
 [[package]]
-name = "codegen"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "genco",
- "inbuilt",
- "syn 2.0.29",
-]
-
-[[package]]
 name = "codespan-reporting"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1128,7 +1118,6 @@ name = "game"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "codegen",
  "tracing",
  "unrust",
 ]
@@ -1308,22 +1297,6 @@ dependencies = [
  "color_quant",
  "num-rational",
  "num-traits",
-]
-
-[[package]]
-name = "inbuilt"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "bevy",
- "genco",
- "parking_lot",
- "proc-macro2",
- "quote",
- "syn 2.0.29",
- "thiserror",
- "tracing",
- "unrust-proc-macro",
 ]
 
 [[package]]
@@ -2298,12 +2271,38 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "bevy",
- "codegen",
- "inbuilt",
  "parking_lot",
  "thiserror",
  "tracing",
  "tracing-subscriber",
+ "unrust-codegen",
+ "unrust-inbuilt",
+ "unrust-proc-macro",
+]
+
+[[package]]
+name = "unrust-codegen"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "genco",
+ "syn 2.0.29",
+ "unrust-inbuilt",
+]
+
+[[package]]
+name = "unrust-inbuilt"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bevy",
+ "genco",
+ "parking_lot",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.29",
+ "thiserror",
+ "tracing",
  "unrust-proc-macro",
 ]
 
