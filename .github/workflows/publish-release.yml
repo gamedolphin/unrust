@@ -11,7 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Install latest nightly
         uses: actions-rs/toolchain@v1
@@ -57,3 +67,23 @@ jobs:
         with:
           name: unrust-sdk-${{ github.event.inputs.release_tag }}
           path: com.wavefunk.unrust-${{ github.event.inputs.release_tag }}.tgz
+
+      - uses: actions/github-script@v6
+         with:
+           script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/release-v${{ github.event.inputs.release_tag }}',
+              sha: context.sha
+            })
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          name: unrust-sdk-${{ github.event.inputs.release_tag }}
+          tag_name: release-v${{ github.event.inputs.release_tag }}
+          fail_on_unmatched_files: true
+          files: com.wavefunk.unrust-${{ github.event.inputs.release_tag }}.tgz
+

@@ -1,7 +1,7 @@
 {
     "name": "com.wavefunk.unrust",
     "displayName": "Unrust - Rust + Bevy",
-    "version": "0.0.1",
+    "version": "0.0.0",
     "description": "Package that lets you work in bevy but use Unity for everything else",
     "dependencies": {
         "com.unity.entities": "1.0.14"        
