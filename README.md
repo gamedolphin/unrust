@@ -37,7 +37,7 @@ Defining a new struct with `unity_authoring` attribute in the `types.rs` file wo
 ```rust
 #[unity_authoring]
 pub struct SampleComponent {
-    pub val: i32,
+    pub val: f32,
 }
 ```
 
